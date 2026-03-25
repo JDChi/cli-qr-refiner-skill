@@ -1,2 +1,4 @@
-node_modules/
-.clawhub/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/

@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI assistants when working with code in this repository.
 
 ## Overview
 
@@ -8,31 +8,33 @@ This is an OpenClaw skill that converts ASCII/Unicode QR code block matrices (te
 
 ## Commands
 
-### Install Dependencies
-```bash
-npm install canvas
-```
-
 ### Run Refinement
 ```bash
-node scripts/cli_qr_refiner.js <input_txt_path> <output_png_path>
+python3 scripts/cli_qr_refiner.py <input_txt_path> <output_png_path> [scale]
 ```
+
+- `scale` is optional (default: 10), controls pixel size per character cell
 
 ## Architecture
 
-The single script `scripts/cli_qr_refiner.js` handles:
+The script `scripts/cli_qr_refiner.py` handles:
 1. Reading raw ASCII/Unicode QR block data from a text file
 2. Auto-detecting matrix dimensions
-3. Rendering to PNG via the `canvas` library with:
+3. Rendering to PNG via PIL with:
    - `█` → full black pixel block
    - `▀` → upper half black block
    - `▄` → lower half black block
-   - scale factor of 10x (each character becomes 10x20 pixels)
+   - scale factor of 10x (each character becomes 10×20 pixels by default)
+
+## Dependencies
+- Python 3 (no external packages — uses built-in PIL/Pillow)
 
 ## File Structure
 ```
-├── SKILL.md          # OpenClaw skill manifest
+├── SKILL.md              # OpenClaw skill manifest
 ├── scripts/
-│   └── cli_qr_refiner.js  # Main rendering logic
-└── CLAUDE.md         # This file
+│   └── cli_qr_refiner.py # Main rendering logic
+├── README.md             # User-facing documentation
+├── CLAUDE.md             # This file
+└── .gitignore            # Python artifacts to ignore
 ```

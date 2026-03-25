@@ -6,24 +6,20 @@ A specialized tool for converting ASCII/Unicode QR code block matrices from CLI 
 
 - **Block Recognition**: Automatically interprets `█` (full), `▀` (upper), and `▄` (lower) block characters
 - **Pixel-Perfect Scaling**: Renders with vector-like precision to ensure zero scanning failures
+- **Zero Dependencies**: Built on Python 3 + PIL (pre-installed on most systems)
 - **Headless Optimized**: Designed for server-side environments where terminal displays are unreliable
 
 ## Prerequisites
 
-- Node.js v16+
-- `canvas` npm package
-
-## Installation
-
-```bash
-npm install canvas
-```
+- Python 3 (no external packages required — PIL/Pillow is built-in)
 
 ## Usage
 
 ```bash
-node scripts/cli_qr_refiner.js <input_txt_path> <output_png_path>
+python3 scripts/cli_qr_refiner.py <input_txt_path> <output_png_path> [scale]
 ```
+
+- `scale` is optional (default: 10), controls pixel size per character cell
 
 ## Example
 
@@ -37,7 +33,7 @@ node scripts/cli_qr_refiner.js <input_txt_path> <output_png_path>
 Save this to a text file and run:
 
 ```bash
-node scripts/cli_qr_refiner.js qr_source.txt qr_output.png
+python3 scripts/cli_qr_refiner.py qr_source.txt qr_output.png
 ```
 
 ### Output
